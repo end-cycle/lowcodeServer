@@ -32,7 +32,7 @@ class UserController {
         } = ctx.request.body
         console.log(ctx.request.body)
         try {
-            const res = await getUserInfo({id})
+            const res = await getUserInfo({ id })
             ctx.body = {
                 code: 0,
                 message: '成功',

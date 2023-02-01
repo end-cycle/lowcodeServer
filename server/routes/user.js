@@ -1,10 +1,10 @@
 const router = require('koa-router')()
 const {
-  register,getOne
+  register, getOne
 } = require('../controller/user')
 router.prefix('/user')
 
-router.post('/register',  register)
+router.post('/register', register)
 
 router.post('/getOne', getOne)
 

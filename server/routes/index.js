@@ -29,7 +29,7 @@ router.post("/upload", async (ctx, next) => {
 /**
  * 清理上传文件目录
  */
-router.get("/uphistoryclear", async (ctx, next) =>{
+router.get("/uphistoryclear", async (ctx, next) => {
   console.log("clear")
   const path = 'fileStorage/uppath'
   emptyDir(path)
@@ -37,7 +37,7 @@ router.get("/uphistoryclear", async (ctx, next) =>{
     Type: 1,
     IsSuccess: true,
     Message: "清除成功",
-  }; 
+  };
   await send(ctx, path);
 })
 
@@ -81,17 +81,17 @@ router.get("/downloadAll", async ctx => {
  * 删除文件夹下所有问价及将文件夹下所有文件清空
  * @param {*} path 
  */
- function emptyDir(path) {
+function emptyDir(path) {
   const files = fs.readdirSync(path);
   files.forEach(file => {
-      const filePath = `${path}/${file}`;
-      const stats = fs.statSync(filePath);
-      if (stats.isDirectory()) {
-          emptyDir(filePath);
-      } else {
-          fs.unlinkSync(filePath);
-          console.log(`删除${file}文件成功`);
-      }
+    const filePath = `${path}/${file}`;
+    const stats = fs.statSync(filePath);
+    if (stats.isDirectory()) {
+      emptyDir(filePath);
+    } else {
+      fs.unlinkSync(filePath);
+      console.log(`删除${file}文件成功`);
+    }
   });
 }
 
