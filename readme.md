@@ -1,32 +1,5 @@
-### ���
-
-> ���� vue3 vite �� koa 
-
-### ��Ŀ���з�ʽ
-
-#### 1. ǰ̨���з�ʽ
-
-> client ��ǰ����Ŀ������ vue + element-plus + axios + vite + scss
-
-```
-## ��װ����
+## 安装node包
 npm install
 
-## ������Ŀ
-npm run dev
-```
-
-#### 2. api �ӿڷ���
-
-> server �ǽӿڷ��񣬻��� koa
-
-```
-## ��װ����
-npm install
-## ������Ŀ
+## 启动项目
 npm run start
-```
-
-## �ǵÿ�readme
-
-
