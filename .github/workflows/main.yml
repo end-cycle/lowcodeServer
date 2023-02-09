@@ -24,7 +24,7 @@ jobs:
           username: 'root'
           server:  ${{ secrets.SERVER_IP }} #测试服务器地址
           ssh_private_key: ${{ secrets.TOKEN }} #SSH密钥
-          local_path: './server/*' #项目打包地址
+          local_path: './*' #项目打包地址
           remote_path: '/www/wwwroot/server' #测试服务器部署路径
       
       - name: deploy file to prod server
@@ -34,5 +34,5 @@ jobs:
           username: 'root'
           server: ${{ secrets.SERVER_IP }} #正式服务器地址
           ssh_private_key: ${{ secrets.TOKEN }} #SSH密钥
-          local_path: './server/*' #项目打包地址
+          local_path: './*' #项目打包地址
           remote_path: '/www/wwwroot/server' #服务器部署路径
