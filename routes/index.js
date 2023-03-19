@@ -10,6 +10,23 @@ router.get("/", async ctx => {
   await ctx.render("index.pug");
 });
 
+router.get("/test", async ctx => {
+  ctx.set("Access-Control-Allow-Origin", "*")
+  ctx.set('Access-Control-Allow-Headers', 'Content-Type, Content-Length, Authorization, Accept, X-Requested-With , yourHeaderFeild');
+  ctx.set('Access-Control-Allow-Methods', 'PUT, POST, GET, DELETE, OPTIONS');
+  ctx.set('Content-Type', 'text/html');
+  ctx.set('Cache-Control', 'max-age=3600');
+  ctx.body = fs.readFileSync(__dirname + '/../views/test.html');
+})
+
+router.get("/imgList", async ctx => {
+  ctx.set('Content-Type', 'image/jpeg');
+  ctx.set('Cache-Control', 'max-age=3600');
+  const id = Math.random();
+  ctx.body = { id, src: fs.readFileSync(__dirname + `/../views/num${ctx.request.query.num}.png`, 'base64') };
+  // ctx.body = fs.readFileSync(__dirname + `/../views/num1.png`);
+})
+
 /**
  * 上传文件
  */
@@ -76,6 +93,10 @@ router.get("/downloadAll", async ctx => {
   await zip.finalize();
   return send(ctx, zipName);
 });
+
+router.get("/demo", async ctx => {
+
+})
 
 /**
  * 删除文件夹下所有问价及将文件夹下所有文件清空

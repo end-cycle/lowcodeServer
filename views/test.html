@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetch Demo</title>
+    <style>
+    </style>
+</head>
+
+<body>
+
+    <button>Click me</button>
+    <div id="results"></div>
+
+    <script>
+        // 获取 button dom 添加点击事件
+        document.querySelector('button').addEventListener('click', async () => {
+            const results = [];
+
+            // 异步获取data
+            for (let i = 1; i <= 5; i++) {
+                const response = await fetch(`http://82.156.7.135/imgList?num=${i}`);
+                const data = await response.json();
+                results.push(data);
+                console.log(data.id);
+            }
+
+            // 排序
+            results.sort((a, b) => a.id - b.id);
+
+            // 获取 results dom ，也可以创建一个results dom
+            const container = document.querySelector('#results');
+            container.innerHTML = '';
+
+            // 遍历添加img.src
+            results.forEach(result => {
+                console.log(result.src);
+                const img = document.createElement('img');
+                img.src = 'data:image/jpg;base64,' + result.src
+                container.appendChild(img);
+            });
+            // await fetch('http://localhost:3001/imgList')
+            //     .then(response => response.blob())
+            //     .then(blob => {
+            //         const img = document.createElement('img');
+            //         img.src = URL.createObjectURL(blob);
+            //         document.body.appendChild(img);
+            //     });
+        });
+
+    </script>
+</body>
+
+</html>
